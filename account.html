@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<head>
+    <title>Moje Konto</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="jsScript.js"></script>
+    <script src="accScript.js"></script>
+</head>
+<body>
+    <h1 class="inf">Zalogowano na konto użytkownika: @UserName</h1>
+    <div class="menuBar">
+            <a id="p1" href="#" class="active">Moje konto</a>
+            <a id="p2" href="#">Wpłata/wypłata</a>
+            <a id="p3" href="#">Przelew wychodzący</a>
+            <a href="main.html">Wyloguj</a>
+    </div>
+    <div class=accData>
+        <ul>
+            <li>Dane konta</li>
+            <li>Numer konta: @Id</li>
+            <li>Saldo: @Balance zł</li>
+        </ul>
+    </div>
+
+    <div id=acc style="display: block">
+        <h3 class="titleOp">Lista Transakcji:</h3>
+        <div id="transactionList">
+            <table class="transaction">
+                <tr>
+                <td>Id</td>
+                <td class="value">@TId</td>
+                </tr>
+                <tr>
+                <td>Kwota[zł]</td>
+                <td class="value">@Value</td>
+                </tr>
+                <tr>
+                <td>Data</td>
+                <td class="value">@Date</td>
+                </tr>
+                <tr>
+                <td>Opis</td>
+                <td class="value">@Description</td>
+                </tr>
+            </table>
+            <table class="transaction">
+                <tr>
+                <td>Id</td>
+                <td class="value">@TId</td>
+                </tr>
+                <tr>
+                <td>Kwota[zł]</td>
+                <td class="value">@Value</td>
+                </tr>
+                <tr>
+                <td>Data</td>
+                <td class="value">@Date</td>
+                </tr>
+                <tr>
+                <td>Opis</td>
+                <td class="value">@Description</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="cashOp" style="display: none">
+            <h3 class="titleOp">Operacja wpłaty/wypłaty:</h3>
+            <div class="log">
+            <form id="cashForm" action="">
+                    <input id="cashOut" type="radio" name="Rodzaj" value="Wypłata" checked>Wypłata<br>
+                    <input id="cashIn" type="radio" name="Rodzaj" value="Wpłata">Wpłata<br><br>
+                    Kwota[zł]:<br>
+                    <input id="cashA" type="text"><br>
+                    Opis:<br>
+                    <input id="cashDes" type="text"><br>
+                    <input type="submit" value="Wykonaj" onclick="cashOp()"><br>
+            </form>
+            </div>
+    </div>
+
+    <div id="tran" style="display: none">
+        <h3 class="titleOp">Operacja przelewu środków:</h3>
+        <div class="log">
+            <form action="#">
+                Na numer konta:<br>
+                <input type="text"><br>
+                Kwota[zł]:<br>
+                <input type="text"><br>
+                Tytuł:<br>
+                <input type="text"><br>
+                <input type="submit" value="Wykonaj"><br>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script>
+loadAcc();
+
+$(document).ready(function() {
+    $('#p1').on('click', function(event){
+        $('#acc').show();
+        $('#cashOp').hide();
+        $('#tran').hide();
+        $('#p1').addClass("active");
+        $('#p2').toggleClass(false);
+        $('#p3').toggleClass(false); 
+    })
+    $('#p2').on('click', function(event){
+        $('#cashOp').show();
+        $('#acc').hide();
+        $('#tran').hide();
+        $('#p2').addClass("active");
+        $('#p1').toggleClass(false);
+        $('#p3').toggleClass(false);
+    })
+    $('#p3').on('click', function(event){
+        $('#tran').show();
+        $('#cashOp').hide();
+        $('#acc').hide();
+        $('#p3').addClass("active");
+        $('#p2').toggleClass(false);
+        $('#p1').toggleClass(false);
+    })
+    $('#cashForm').submit(function(event){
+        event.preventDefault();
+        return false;
+    });
+});
+
+</script>

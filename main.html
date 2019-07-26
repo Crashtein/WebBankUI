@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <title>Witaj!</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1 class="inf" style="width: 650px;">Witaj na stronie internetowej Twojego banku!</h1>
+    <h2 class="inf" style="width: 400px; ">Zaloguj się lub rozpocznij rejestracje:</h2>
+    <h3 class="inf" style="width: 200px; ">Zaloguj:</h3>
+    <div class="log">
+    <form id="logIn" action="#">
+        Login:<br>
+        <input id="login" type="text"><br>
+        Hasło:<br>
+        <input id="pwd" type="password"><br>
+        <input type="submit" value="Zaloguj"><br>
+    </form>
+    </div>
+    <h3 class="inf" style="width: 200px; ">Rejestracja:</h3>
+    <div class="log">
+    <form id="signIn" action="#">
+        Login:<br>
+        <input id="loginR" type="text"><br>
+        Hasło:<br>
+        <input id="pwdR" type="password"><br>
+        <input type="submit" value="Zarejestruj"><br>
+    </form>
+    </div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function() {
+        $('#logIn').on('submit', function(event){
+            var login = $('#login').val();
+            var pwd = $('#pwd').val();
+            if(localStorage.getItem(login)){
+                var local = localStorage.getItem(login)
+                var object = JSON.parse(local)
+                if(pwd == object.Password){
+                    window.open("account.html?UserName=" + login, "_self");
+                }else{
+                    alert("Błędne hasło!");
+                }
+            }else{
+                alert("Nie ma takiego użytkownika!")
+            }
+            
+        })
+        $('#signIn').on('submit', function(event){
+            var login = $('#loginR').val();
+            var pwd = $('#pwdR').val();
+            if(login.length>=3 & pwd.length>=3){
+                if(localStorage.getItem(login)){
+                    alert(login + " Taki użytkownik istnieje!");
+                }else{
+                    localStorage.setItem(login,JSON.stringify({Id: 0,UserName: login,Password: pwd, Balance: 0}));
+                    alert(login + " Twoje konto zostało utworzone pomyślnie! Zaloguj się na swoje konto!");
+                }
+            }else{
+                alert("Login i hasło muszą mieć co najmniej 3 znaki")
+            }
+        })
+    });
+
+</script>

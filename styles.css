@@ -1,0 +1,102 @@
+    body{
+        background-image: url("money2.jpg");
+    }
+    .inf{
+       text-align: center;
+        background-color: rgba(178, 211, 238, 0.479);
+        color: rgb(85, 44, 25); 
+        margin: 0 auto; 
+        border: 2px solid grey;
+        margin-top: 10px;
+        font-style: oblique;
+    }
+    .log{
+        text-align: center;
+        background-color: rgba(0, 128, 0, 0.521);
+        width: 300px; 
+        margin: 0 auto; 
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .menuBar {
+        list-style-type: none;
+        height: 40px;
+        text-align: center;
+        margin-top: 10px;
+        font-style: oblique;
+        font-weight: bold;
+        width: 100%;
+    }
+    .menuBar a{
+        background-color: rgba(178, 211, 238, 0.479);
+        display: block;
+        padding: 10px;
+        font-family: fantasy;
+        font-size: 3vw;
+        color: rgb(81, 56, 219);
+        text-decoration: none;
+        display: inline;
+        border: 2px solid black;
+    }
+    .menuBar a:hover{
+        background-color: rgba(65, 105, 225, 0.295);
+        text-decoration: none;
+    }
+    .menuBar a.active{
+         background-color: rgba(202, 81, 81, 0.404);
+    }
+
+    .accData{
+        background-color: rgba(43, 66, 196, 0.575);
+        color: rgba(255, 255, 255, 0.685);
+        float: left;
+        margin-top: 20px;
+    }
+    .accData ul{
+        list-style-type: none; 
+        font-size: 30px; 
+        background-color: rgba(42, 54, 165, 0.726);
+        font-style: italic;
+    }
+    .titleOp{
+        background-color: rgba(0, 128, 0, 0.521); 
+        margin-left: 300px;
+        text-align: center;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+    #time{
+        font-size: 40px;
+        float: right;
+        margin-top: 0px;
+        margin-right: 10px;
+        background-color: rgba(178, 211, 238, 0.479);
+        font-weight: bold;
+        font-style: italic;
+        color: rgba(112, 48, 48, 0.678);
+        border: 4px dotted black;
+    }
+    #transactionList{
+        background-color: rgba(0, 128, 0, 0.212);
+        margin-left: 300px;
+        font-size: 20px;
+        font-style: oblique;
+        font-weight: bold;
+    }
+    .transaction{
+        border: 3px solid black;
+    }
+    .transaction:hover{
+        background-color: rgba(144, 238, 144, 0.336);
+    }
+    .transaction td{
+        border: 1px solid black;
+    }
+    .transaction tr:hover{
+        background-color: rgba(153, 205, 50, 0.445);
+    }
+    .value{
+        width: 100%;
+    }
